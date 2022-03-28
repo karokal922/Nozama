@@ -14,6 +14,25 @@
         </LinearGradientBrush>
     </Window.Background>
     <Grid>
-        <Button x:Name="btnLoguj" Content="Zaloguj" HorizontalAlignment="Right" Margin="0,131,326,0" VerticalAlignment="Top" Width="83" Background="#FF535353" Foreground="White" FontSize="18" Height="35"/>
+        <Label Content="Zarejestuj" HorizontalAlignment="Left" Margin="30,10,0,0" VerticalAlignment="Top" Foreground="White" FontSize="24"/>
+        <Button x:Name="btnZatwierdz" Content="Zatwierdź" HorizontalAlignment="Right" Margin="0,341,62,0" VerticalAlignment="Top" Width="99" Background="#FF535353" Foreground="White" FontSize="18" Height="35" Click="btnLoguj_Click"/>
+        <Label Content="Imię:" HorizontalAlignment="Right" Margin="0,113,595,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
+        <Label Content="Nazwisko:" HorizontalAlignment="Right" Margin="0,152,595,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
+        <Label Content="Nr. kontaktowy:" HorizontalAlignment="Right" Margin="0,191,595,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
+        <Label Content="Dane osobowe" HorizontalAlignment="Left" Margin="62,79,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18" FontWeight="Bold"/>
+        <Label Content="Adres" HorizontalAlignment="Right" Margin="0,79,270,0" VerticalAlignment="Top" Foreground="White" FontSize="18" FontWeight="Bold"/>
+        <Label Content="Miejscowość:" HorizontalAlignment="Right" Margin="0,113,270,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
+        <Label Content="Kod pocztowy:" HorizontalAlignment="Right" Margin="0,152,270,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
+        <Label Content="Ulica:" HorizontalAlignment="Right" Margin="0,191,270,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
+        <Label Content="Nr. budynku:" HorizontalAlignment="Right" Margin="0,230,270,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
+        <Label Content="Nr. mieszkania:" HorizontalAlignment="Right" Margin="0,269,270,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
+        <TextBox x:Name="txtImie" HorizontalAlignment="Right" Height="34" Margin="0,113,402,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Background="{x:Null}" Foreground="White" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalScrollBarVisibility="Disabled"/>
+        <TextBox x:Name="txtNazwisko" HorizontalAlignment="Right" Height="34" Margin="0,152,402,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Background="{x:Null}" Foreground="White" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalScrollBarVisibility="Disabled"/>
+        <TextBox x:Name="txtNrKontaktowy" HorizontalAlignment="Right" Height="34" Margin="0,191,402,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Background="{x:Null}" Foreground="White" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalScrollBarVisibility="Disabled"/>
+        <TextBox x:Name="txtMiejscowosc" HorizontalAlignment="Right" Height="34" Margin="0,113,62,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Background="{x:Null}" Foreground="White" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalScrollBarVisibility="Disabled"/>
+        <TextBox x:Name="txtKodPocztowy" HorizontalAlignment="Right" Height="34" Margin="0,152,62,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Background="{x:Null}" Foreground="White" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalScrollBarVisibility="Disabled"/>
+        <TextBox x:Name="txtUlica" HorizontalAlignment="Right" Height="34" Margin="0,191,62,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Background="{x:Null}" Foreground="White" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalScrollBarVisibility="Disabled"/>
+        <TextBox x:Name="txtNrBudynku" HorizontalAlignment="Right" Height="34" Margin="0,230,62,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Background="{x:Null}" Foreground="White" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalScrollBarVisibility="Disabled"/>
+        <TextBox x:Name="txtNrMieszkania" HorizontalAlignment="Right" Height="34" Margin="0,269,62,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Background="{x:Null}" Foreground="White" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalScrollBarVisibility="Disabled"/>
     </Grid>
 </Window>
