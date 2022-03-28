@@ -44,6 +44,7 @@ namespace Nozama
                 
                 MySqlDataReader dataReader = command.ExecuteReader();
                 dataReader.Read();
+                if (!dataReader.HasRows) { MessageBox.Show("Zły logon."); }
                 Console.WriteLine(dataReader.GetString(0));
                 if (hasło == dataReader.GetString(0))
                 {
@@ -62,26 +63,27 @@ namespace Nozama
             }
         }
 
-        //private void btnPoka_Click(object sender, RoutedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        contact.connection.Open();
-        //        //command = new MySqlCommand("INSERT INTO `konta` (`ID_Konta`, `Login`, `Haslo`) VALUES (NULL, 'aaaaa', '$2y$10$db.aw2RhBdNSx4HXOX.eouCeKgV4XoGtuvFQKk8ZgshKpiingP3i.')",contact.connection);
-        //        //command.ExecuteNonQuery();
-        //        command = new MySqlCommand("Select * from konta",contact.connection);
-        //        command.ExecuteNonQuery();
-        //        gr = new DataTable();
-        //        adapter = new MySqlDataAdapter(command);
-        //        adapter.Fill(gr);
-        //        dtaPlace.ItemsSource = gr.DefaultView;
 
-            //        contact.connection.Close();
-            //    }
-            //    catch (Exception error)
-            //    {
-            //        MessageBox.Show(error.Message);
-            //    }
-            //}
-        }
+        /*private void btnPoka_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                contact.connection.Open();
+                //command = new MySqlCommand("INSERT INTO `konta` (`ID_Konta`, `Login`, `Haslo`) VALUES (NULL, 'aaaaa', '$2y$10$db.aw2RhBdNSx4HXOX.eouCeKgV4XoGtuvFQKk8ZgshKpiingP3i.')",contact.connection);
+                //command.ExecuteNonQuery();
+                command = new MySqlCommand("Select * from konta",contact.connection);
+                command.ExecuteNonQuery();
+                gr = new DataTable();
+                adapter = new MySqlDataAdapter(command);
+                adapter.Fill(gr);
+                dtaPlace.ItemsSource = gr.DefaultView;
+
+                contact.connection.Close();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
+        }*/
+    }
 }

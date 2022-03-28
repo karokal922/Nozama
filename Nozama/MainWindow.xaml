@@ -15,7 +15,7 @@
     </Window.Background>
     <Grid>
         <Label Content="Sprawdź status przesyłki:" HorizontalAlignment="Center" Margin="0,57,0,0" VerticalAlignment="Top" Foreground="White" FontSize="24"/>
-        <TextBox x:Name="txtIdPaczki" HorizontalAlignment="Center" Height="37" Margin="0,121,0,0" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Width="120" Background="{x:Null}" Foreground="#FFA4A4A4" FontSize="24" HorizontalContentAlignment="Center"/>
+        <TextBox x:Name="txtIdPaczki" HorizontalAlignment="Center" Height="37" Margin="0,121,0,0" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Width="367" Background="{x:Null}" Foreground="#FFA4A4A4" FontSize="24" HorizontalContentAlignment="Center"/>
         <TextBox x:Name="txtLogin" HorizontalAlignment="Right" Height="40" Margin="0,231,469,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Background="{x:Null}" Foreground="White" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalScrollBarVisibility="Disabled"/>
         <PasswordBox x:Name="pasHaslo" HorizontalAlignment="Right" Margin="0,276,469,0" VerticalAlignment="Top" MinWidth="100" MinHeight="20" Background="{x:Null}" Foreground="White" Width="188" Height="40" FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
         <Label Content="Login:" HorizontalAlignment="Right" Margin="0,231,662,0" VerticalAlignment="Top" Foreground="White" FontSize="24" Height="45" Width="79"/>
@@ -24,5 +24,6 @@
         <Label Content="Zaloguj się:&#x9;" HorizontalAlignment="Center" Margin="164,184,498,0" VerticalAlignment="Top" Foreground="White" FontSize="24" Width="130"/>
         <Label Content="lub" HorizontalAlignment="Center" Margin="0,250,0,0" VerticalAlignment="Top" Foreground="White" FontSize="24" Width="43"/>
         <Button x:Name="btnRejestruj" Content="Zarejestruj" HorizontalAlignment="Right" Margin="0,255,108,0" VerticalAlignment="Top" Width="112" Background="#FF535353" Foreground="White" FontSize="18" Height="35"/>
+        <Button x:Name="btnRejestruj_Copy" Content="Sprawdź" HorizontalAlignment="Right" Margin="0,121,91,0" VerticalAlignment="Top" Width="100" Background="#FF535353" Foreground="White" FontSize="18" Height="38"/>
     </Grid>
 </Window>
