@@ -13,7 +13,7 @@ namespace Nozama
         public MySqlConnection connection;
         public void Connect()
         {
-            connection = new MySqlConnection("Datasource=127.0.0.1;username=root;password=;database=nozamav2");
+            connection = new MySqlConnection("Datasource=127.0.0.1;username=root;password=;database=nozama");
         }
     }
 }

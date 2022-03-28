@@ -32,6 +32,36 @@ namespace Nozama
             contact.Connect();
         }
 
+        private void btnLoguj_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string login = txtLogin.Text;
+                string hasło = pasHaslo.Password;
+                contact.connection.Open();
+                command = new MySqlCommand($"SELECT Haslo FROM konta WHERE Login='{login}'",contact.connection);
+                command.ExecuteNonQuery();
+                
+                MySqlDataReader dataReader = command.ExecuteReader();
+                dataReader.Read();
+                Console.WriteLine(dataReader.GetString(0));
+                if (hasło == dataReader.GetString(0))
+                {
+                    MessageBox.Show("Udało się zalogować");
+                    //NOWE OKNO
+                }
+                else
+                {
+                    MessageBox.Show("Złe hasło");
+                }
+
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
+        }
+
         //private void btnPoka_Click(object sender, RoutedEventArgs e)
         //{
         //    try
@@ -45,13 +75,13 @@ namespace Nozama
         //        adapter = new MySqlDataAdapter(command);
         //        adapter.Fill(gr);
         //        dtaPlace.ItemsSource = gr.DefaultView;
-                
-        //        contact.connection.Close();
-        //    }
-        //    catch (Exception error)
-        //    {
-        //        MessageBox.Show(error.Message);
-        //    }
-        //}
-    }
+
+            //        contact.connection.Close();
+            //    }
+            //    catch (Exception error)
+            //    {
+            //        MessageBox.Show(error.Message);
+            //    }
+            //}
+        }
 }
