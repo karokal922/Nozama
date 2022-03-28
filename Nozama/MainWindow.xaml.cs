@@ -1,0 +1,57 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.Data;
+using MySql.Data.MySqlClient;
+
+namespace Nozama
+{
+    /// <summary>
+    /// Logika interakcji dla klasy MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        Connection contact = new Connection();
+        MySqlCommand command;
+        MySqlDataAdapter adapter;
+        DataTable gr;
+        public MainWindow()
+        {
+            InitializeComponent();
+            contact.Connect();
+        }
+
+        //private void btnPoka_Click(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        contact.connection.Open();
+        //        //command = new MySqlCommand("INSERT INTO `konta` (`ID_Konta`, `Login`, `Haslo`) VALUES (NULL, 'aaaaa', '$2y$10$db.aw2RhBdNSx4HXOX.eouCeKgV4XoGtuvFQKk8ZgshKpiingP3i.')",contact.connection);
+        //        //command.ExecuteNonQuery();
+        //        command = new MySqlCommand("Select * from konta",contact.connection);
+        //        command.ExecuteNonQuery();
+        //        gr = new DataTable();
+        //        adapter = new MySqlDataAdapter(command);
+        //        adapter.Fill(gr);
+        //        dtaPlace.ItemsSource = gr.DefaultView;
+                
+        //        contact.connection.Close();
+        //    }
+        //    catch (Exception error)
+        //    {
+        //        MessageBox.Show(error.Message);
+        //    }
+        //}
+    }
+}
