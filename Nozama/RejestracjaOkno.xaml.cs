@@ -23,5 +23,10 @@ namespace Nozama
         {
             InitializeComponent();
         }
+
+        private void btnLoguj_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
