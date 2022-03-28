@@ -24,6 +24,6 @@
         <Label Content="Zaloguj się:&#x9;" HorizontalAlignment="Center" Margin="164,184,498,0" VerticalAlignment="Top" Foreground="White" FontSize="24" Width="130"/>
         <Label Content="lub" HorizontalAlignment="Center" Margin="0,250,0,0" VerticalAlignment="Top" Foreground="White" FontSize="24" Width="43"/>
         <Button x:Name="btnRejestruj" Content="Zarejestruj" HorizontalAlignment="Right" Margin="0,255,108,0" VerticalAlignment="Top" Width="112" Background="#FF535353" Foreground="White" FontSize="18" Height="35"/>
-        <Button x:Name="btnRejestruj_Copy" Content="Sprawdź" HorizontalAlignment="Right" Margin="0,121,91,0" VerticalAlignment="Top" Width="100" Background="#FF535353" Foreground="White" FontSize="18" Height="38"/>
+        <Button x:Name="btnRejestruj_Copy" Content="Sprawdź" HorizontalAlignment="Right" Margin="0,121,91,0" VerticalAlignment="Top" Width="100" Background="#FF535353" Foreground="White" FontSize="18" Height="38" Click="btnRejestruj_Copy_Click"/>
     </Grid>
 </Window>

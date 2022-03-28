@@ -45,8 +45,7 @@ namespace Nozama
                 MySqlDataReader dataReader = command.ExecuteReader();
                 dataReader.Read();
                 if (!dataReader.HasRows) { MessageBox.Show("Zły logon."); }
-                Console.WriteLine(dataReader.GetString(0));
-                if (hasło == dataReader.GetString(0))
+                else if(hasło == dataReader.GetString(0))
                 {
                     MessageBox.Show("Udało się zalogować");
                     //NOWE OKNO
@@ -54,6 +53,31 @@ namespace Nozama
                 else
                 {
                     MessageBox.Show("Złe hasło");
+                }
+
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
+        }
+
+        private void btnRejestruj_Copy_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                int id_paczki = Convert.ToInt32(txtIdPaczki.Text);
+
+                contact.connection.Open();
+                command = new MySqlCommand($"SELECT Status FROM status WHERE ID_Statusu='{id_paczki}'", contact.connection);
+                command.ExecuteNonQuery();
+
+                MySqlDataReader dataReader = command.ExecuteReader();
+                dataReader.Read();
+                if (!dataReader.HasRows) { MessageBox.Show("Brak paczki o podanym ID"); }
+                else
+                {
+                    MessageBox.Show(dataReader.GetString(0));
                 }
 
             }
