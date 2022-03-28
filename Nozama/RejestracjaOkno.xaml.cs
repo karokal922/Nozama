@@ -18,8 +18,6 @@ namespace Nozama
 {
     public partial class RejestracjaOkno : Window
     {
-        //MySqlConnection c = new MySqlConnection("Datasource=127.0.0.1;username=root;password=;database=nozama");
-        
         MySqlCommand command;
         MySqlCommand select;
         public RejestracjaOkno()
@@ -30,18 +28,18 @@ namespace Nozama
         {
             try
             {
-                //if (txtImie.Text != "" && txtKodPocztowy.Text != "" && txtMiejscowosc.Text != "" && txtNazwisko.Text != "" &&
-                //    txtNrBudynku.Text != "" && txtNrKontaktowy.Text != "" && txtNrMieszkania.Text != "" && txtUlica.Text != "" &&
-                //    txtLogin.Text != "" && txtHaslo.Text != "" && txtHasloPowtorka.Text != "")
-                //{
+                if (txtImie.Text != "" && txtKodPocztowy.Text != "" && txtMiejscowosc.Text != "" && txtNazwisko.Text != "" &&
+                    txtNrBudynku.Text != "" && txtNrKontaktowy.Text != "" && txtNrMieszkania.Text != "" && txtUlica.Text != "" &&
+                    txtLogin.Text != "" && txtHaslo.Password != "" && txtHasloPowtorka.Password != "")
+                {
                     string imie = txtImie.Text;
                     string nazwisko = txtNazwisko.Text;
                     string miejscowosc = txtMiejscowosc.Text;
                     string ulica = txtUlica.Text;
                     string kodPocztowy = txtKodPocztowy.Text;
                     string login = txtLogin.Text;
-                    string haslo = txtHaslo.Text;
-                    string hasloPowtorka = txtHasloPowtorka.Text;
+                    string haslo = txtHaslo.Password;
+                    string hasloPowtorka = txtHasloPowtorka.Password;
                     int nrKontaktowy = Convert.ToInt32(txtNrKontaktowy.Text);
                     int nrBudynku = Convert.ToInt32(txtNrBudynku.Text);
                     int nrMieszkania = Convert.ToInt32(txtNrMieszkania.Text);
@@ -63,8 +61,6 @@ namespace Nozama
                         throw new Exception("Hasła się nie zgadzają.");
                     }
 
-                    
-                    //c.Open();
                     MainWindow.contact.connection.Open();
                     select = new MySqlCommand($"SELECT `ID_Konta` FROM `konta` WHERE Login='{login}'", MainWindow.contact.connection);
                     select.ExecuteNonQuery();
@@ -80,11 +76,10 @@ namespace Nozama
                     command.ExecuteNonQuery();
                     MainWindow.contact.connection.Close();
 
-                    MainWindow.contact.connection.Open();
                     //Znalezienie ID_Konta nowego uzytkownika
+                    MainWindow.contact.connection.Open();
                     select.ExecuteNonQuery();
-                MySqlDataReader dataReader1 = select.ExecuteReader();
-               // dataReader1 = select.ExecuteReader();
+                    MySqlDataReader dataReader1 = select.ExecuteReader();
                     dataReader1.Read();
                     int idNowegoKonta = Convert.ToInt32(dataReader1.GetString(0));
                     dataReader1.Close();
@@ -96,29 +91,27 @@ namespace Nozama
                     command.ExecuteNonQuery();
                     MainWindow.contact.connection.Close();
 
-                //Znalezienie ID_Adresu nowego adresu
-                MainWindow.contact.connection.Open();
-                select = new MySqlCommand($"SELECT `ID_Adresu` FROM `adres` WHERE Miejscowosc='{miejscowosc}' AND Kod_pocztowy='{kodPocztowy}' AND Ulica='{ulica}' AND Nr_budynku='{nrBudynku}' AND Nr_mieszkania='{nrMieszkania}'", MainWindow.contact.connection);
+                    //Znalezienie ID_Adresu nowego adresu
+                    MainWindow.contact.connection.Open();
+                    select = new MySqlCommand($"SELECT `ID_Adresu` FROM `adres` WHERE Miejscowosc='{miejscowosc}' AND Kod_pocztowy='{kodPocztowy}' AND Ulica='{ulica}' AND Nr_budynku='{nrBudynku}' AND Nr_mieszkania='{nrMieszkania}'", MainWindow.contact.connection);
                     select.ExecuteNonQuery();
-                MySqlDataReader dataReader2 = select.ExecuteReader();
-                //dataReader = select.ExecuteReader();
+                    MySqlDataReader dataReader2 = select.ExecuteReader();
                     dataReader2.Read();
                     int idNowegoAdresu = Convert.ToInt32(dataReader2.GetString(0));
                     dataReader2.Close();
-                MainWindow.contact.connection.Close();
-
-                //INSERT do `klienci`
-                MainWindow.contact.connection.Open();
-                command = new MySqlCommand($"INSERT INTO `klienci` (`ID_Klienta`, `Konto_ID`, `Imie`, `Nazwisko`, `Adres_ID`, `Nr_kontaktowy`) VALUES (NULL, '{idNowegoKonta}', '{imie}', '{nazwisko}', '{idNowegoAdresu}', '{nrKontaktowy}');", MainWindow.contact.connection);
-                command.ExecuteNonQuery();
                     MainWindow.contact.connection.Close();
-                    //c.Close();
+
+                    //INSERT do `klienci`
+                    MainWindow.contact.connection.Open();
+                    command = new MySqlCommand($"INSERT INTO `klienci` (`ID_Klienta`, `Konto_ID`, `Imie`, `Nazwisko`, `Adres_ID`, `Nr_kontaktowy`) VALUES (NULL, '{idNowegoKonta}', '{imie}', '{nazwisko}', '{idNowegoAdresu}', '{nrKontaktowy}');", MainWindow.contact.connection);
+                    command.ExecuteNonQuery();
+                    MainWindow.contact.connection.Close();
                     this.Close();
-                //}
-                //else
-                //{
-                //    throw new Exception("Uzupełnij dane");
-                //}
+                }
+                else
+                {
+                    throw new Exception("Uzupełnij dane");
+                }
             }
             catch (Exception error)
             {

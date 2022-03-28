@@ -37,9 +37,9 @@
         <Label Content="Login:" HorizontalAlignment="Right" Margin="0,286,614,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
         <Label Content="Hasło:" HorizontalAlignment="Right" Margin="0,325,614,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
         <TextBox x:Name="txtLogin" HorizontalAlignment="Right" Height="34" Margin="0,286,421,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Background="{x:Null}" Foreground="White" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalScrollBarVisibility="Disabled"/>
-        <TextBox x:Name="txtHaslo" HorizontalAlignment="Right" Height="34" Margin="0,325,421,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Background="{x:Null}" Foreground="White" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalScrollBarVisibility="Disabled"/>
         <Label Content="Powtórz hasło:" HorizontalAlignment="Right" Margin="0,364,614,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
-        <TextBox x:Name="txtHasloPowtorka" HorizontalAlignment="Right" Height="34" Margin="0,364,421,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" Background="{x:Null}" Foreground="White" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalScrollBarVisibility="Disabled"/>
+        <PasswordBox x:Name="txtHaslo" HorizontalAlignment="Right" Margin="0,325,421,0" VerticalAlignment="Top" MinWidth="100" MinHeight="20" Background="{x:Null}" Foreground="White" Width="188" Height="34" FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
         <Label Content="Dane konta" HorizontalAlignment="Left" Margin="71,247,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18" FontWeight="Bold"/>
+        <PasswordBox x:Name="txtHasloPowtorka" HorizontalAlignment="Right" Margin="0,364,421,0" VerticalAlignment="Top" MinWidth="100" MinHeight="20" Background="{x:Null}" Foreground="White" Width="188" Height="34" FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
     </Grid>
 </Window>
