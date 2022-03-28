@@ -22,10 +22,10 @@ namespace Nozama
     /// </summary>
     public partial class MainWindow : Window
     {
-        Connection contact = new Connection();
+        public static Connection contact = new Connection();
         MySqlCommand command;
-        MySqlDataAdapter adapter;
-        DataTable gr;
+        //MySqlDataAdapter adapter;
+        //DataTable gr;
         public MainWindow()
         {
             InitializeComponent();
@@ -44,7 +44,7 @@ namespace Nozama
                 
                 MySqlDataReader dataReader = command.ExecuteReader();
                 dataReader.Read();
-                if (!dataReader.HasRows) { MessageBox.Show("Zły logon."); }
+                if (!dataReader.HasRows) { MessageBox.Show("Zły login."); }
                 else if(hasło == dataReader.GetString(0))
                 {
                     MessageBox.Show("Udało się zalogować");
@@ -54,7 +54,7 @@ namespace Nozama
                 {
                     MessageBox.Show("Złe hasło");
                 }
-
+                contact.connection.Close();
             }
             catch (Exception error)
             {
@@ -62,7 +62,7 @@ namespace Nozama
             }
         }
 
-        private void btnRejestruj_Copy_Click(object sender, RoutedEventArgs e)
+        private void btnSprawdz_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -79,13 +79,20 @@ namespace Nozama
                 {
                     MessageBox.Show(dataReader.GetString(0));
                 }
-
+                contact.connection.Close();
             }
             catch (Exception error)
             {
                 MessageBox.Show(error.Message);
             }
         }
+
+        private void btnRejestruj_Click(object sender, RoutedEventArgs e)
+        {
+            RejestracjaOkno rejestracja = new RejestracjaOkno();
+            rejestracja.ShowDialog();
+        }
+
 
 
         /*private void btnPoka_Click(object sender, RoutedEventArgs e)

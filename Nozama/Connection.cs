@@ -8,7 +8,7 @@ using MySql.Data.MySqlClient;
 
 namespace Nozama
 {
-    class Connection
+    public class Connection
     {
         public MySqlConnection connection;
         public void Connect()

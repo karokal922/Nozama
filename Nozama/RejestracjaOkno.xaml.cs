@@ -11,22 +11,119 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data;
+using MySql.Data.MySqlClient;
 
 namespace Nozama
 {
-    /// <summary>
-    /// Logika interakcji dla klasy RejestracjaOkno.xaml
-    /// </summary>
     public partial class RejestracjaOkno : Window
     {
+        //MySqlConnection c = new MySqlConnection("Datasource=127.0.0.1;username=root;password=;database=nozama");
+        
+        MySqlCommand command;
+        MySqlCommand select;
         public RejestracjaOkno()
         {
             InitializeComponent();
         }
-
-        private void btnLoguj_Click(object sender, RoutedEventArgs e)
+        private void btnZatwierdz_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                //if (txtImie.Text != "" && txtKodPocztowy.Text != "" && txtMiejscowosc.Text != "" && txtNazwisko.Text != "" &&
+                //    txtNrBudynku.Text != "" && txtNrKontaktowy.Text != "" && txtNrMieszkania.Text != "" && txtUlica.Text != "" &&
+                //    txtLogin.Text != "" && txtHaslo.Text != "" && txtHasloPowtorka.Text != "")
+                //{
+                    string imie = txtImie.Text;
+                    string nazwisko = txtNazwisko.Text;
+                    string miejscowosc = txtMiejscowosc.Text;
+                    string ulica = txtUlica.Text;
+                    string kodPocztowy = txtKodPocztowy.Text;
+                    string login = txtLogin.Text;
+                    string haslo = txtHaslo.Text;
+                    string hasloPowtorka = txtHasloPowtorka.Text;
+                    int nrKontaktowy = Convert.ToInt32(txtNrKontaktowy.Text);
+                    int nrBudynku = Convert.ToInt32(txtNrBudynku.Text);
+                    int nrMieszkania = Convert.ToInt32(txtNrMieszkania.Text);
 
+                    if (txtNrKontaktowy.Text.Length != 9)
+                    {
+                        throw new Exception("Zły numer kontaktowy (9 cyfr).");
+                    }
+                    if (kodPocztowy.Length>6 || !kodPocztowy.Contains("-") || kodPocztowy.IndexOf("-") != 2)
+                    {
+                        throw new Exception("Zły kod pocztowy (np: 12-345).");
+                    }
+                    if (haslo.Length < 7)
+                    {
+                        throw new Exception("Hasło minimum 8 znaków.");
+                    }
+                    if (haslo != hasloPowtorka)
+                    {
+                        throw new Exception("Hasła się nie zgadzają.");
+                    }
+
+                    
+                    //c.Open();
+                    MainWindow.contact.connection.Open();
+                    select = new MySqlCommand($"SELECT `ID_Konta` FROM `konta` WHERE Login='{login}'", MainWindow.contact.connection);
+                    select.ExecuteNonQuery();
+                    MySqlDataReader dataReader = select.ExecuteReader();
+                    dataReader.Read();
+                    if (dataReader.HasRows) { throw new Exception("Podany login juz istnieje."); }
+                    dataReader.Close();
+                    MainWindow.contact.connection.Close();
+
+                    //INSERT do `konta`
+                    MainWindow.contact.connection.Open();
+                    command = new MySqlCommand($"INSERT INTO `konta` (`ID_Konta`, `Czy_Pracownik`, `Login`, `Haslo`) VALUES (NULL, '', '{login}', '{haslo}');", MainWindow.contact.connection);
+                    command.ExecuteNonQuery();
+                    MainWindow.contact.connection.Close();
+
+                    MainWindow.contact.connection.Open();
+                    //Znalezienie ID_Konta nowego uzytkownika
+                    select.ExecuteNonQuery();
+                MySqlDataReader dataReader1 = select.ExecuteReader();
+               // dataReader1 = select.ExecuteReader();
+                    dataReader1.Read();
+                    int idNowegoKonta = Convert.ToInt32(dataReader1.GetString(0));
+                    dataReader1.Close();
+                    MainWindow.contact.connection.Close();
+
+                    //INSERT do `adres` 
+                    MainWindow.contact.connection.Open();
+                    command = new MySqlCommand($"INSERT INTO `adres` (`ID_Adresu`, `Miejscowosc`, `Kod_pocztowy`, `Ulica`, `Nr_budynku`, `Nr_mieszkania`) VALUES ('', '{miejscowosc}', '{kodPocztowy}', '{ulica}', '{nrBudynku}', '{nrMieszkania}');", MainWindow.contact.connection);
+                    command.ExecuteNonQuery();
+                    MainWindow.contact.connection.Close();
+
+                //Znalezienie ID_Adresu nowego adresu
+                MainWindow.contact.connection.Open();
+                select = new MySqlCommand($"SELECT `ID_Adresu` FROM `adres` WHERE Miejscowosc='{miejscowosc}' AND Kod_pocztowy='{kodPocztowy}' AND Ulica='{ulica}' AND Nr_budynku='{nrBudynku}' AND Nr_mieszkania='{nrMieszkania}'", MainWindow.contact.connection);
+                    select.ExecuteNonQuery();
+                MySqlDataReader dataReader2 = select.ExecuteReader();
+                //dataReader = select.ExecuteReader();
+                    dataReader2.Read();
+                    int idNowegoAdresu = Convert.ToInt32(dataReader2.GetString(0));
+                    dataReader2.Close();
+                MainWindow.contact.connection.Close();
+
+                //INSERT do `klienci`
+                MainWindow.contact.connection.Open();
+                command = new MySqlCommand($"INSERT INTO `klienci` (`ID_Klienta`, `Konto_ID`, `Imie`, `Nazwisko`, `Adres_ID`, `Nr_kontaktowy`) VALUES (NULL, '{idNowegoKonta}', '{imie}', '{nazwisko}', '{idNowegoAdresu}', '{nrKontaktowy}');", MainWindow.contact.connection);
+                command.ExecuteNonQuery();
+                    MainWindow.contact.connection.Close();
+                    //c.Close();
+                    this.Close();
+                //}
+                //else
+                //{
+                //    throw new Exception("Uzupełnij dane");
+                //}
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
         }
     }
 }
