@@ -26,12 +26,14 @@ namespace Nozama
             InitializeComponent();
             try
             {
+                MainWindow.contact.connection.Open();
                 MySqlCommand command = new MySqlCommand("Select * from konta", MainWindow.contact.connection);
                 command.ExecuteNonQuery();
                 DataTable gr = new DataTable();
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 adapter.Fill(gr);
                 dtaDostepneZlecenia.ItemsSource = gr.DefaultView;
+                MainWindow.contact.connection.Close();
             }
             catch (Exception error)
             {
