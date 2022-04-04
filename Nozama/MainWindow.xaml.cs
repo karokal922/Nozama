@@ -43,15 +43,37 @@ namespace Nozama
                 
                 MySqlDataReader dataReader = command.ExecuteReader();
                 dataReader.Read();
-                if (!dataReader.HasRows) { MessageBox.Show("Zły login."); }
+                if (!dataReader.HasRows)
+                { 
+                    MessageBox.Show("Zły login."); 
+                    dataReader.Close(); 
+                    contact.connection.Close(); 
+                }
                 else if(hasło == dataReader.GetString(0))
                 {
-                    //MessageBox.Show("Udało się zalogować");
-                    KlientOkno klientOkno = new KlientOkno();
-                    this.Visibility = Visibility.Hidden;
-                    klientOkno.ShowDialog();
-                    this.Visibility = Visibility.Visible;
-                    //NOWE OKNO
+                    dataReader.Close();
+                    command = new MySqlCommand($"SELECT Czy_Pracownik FROM konta WHERE Login='{login}' AND Haslo='{hasło}'", contact.connection);
+                    dataReader = command.ExecuteReader();
+                    dataReader.Read();
+                    if (dataReader.GetBoolean(0) == false)
+                    {
+                        KlientOkno klientOkno = new KlientOkno();
+                        this.Visibility = Visibility.Hidden;
+                        klientOkno.ShowDialog();
+                        this.Visibility = Visibility.Visible;
+                    }
+                    else if(dataReader.GetBoolean(0) == true)
+                    {
+
+                        PracownikOkno pracownikOkno = new PracownikOkno();
+                        this.Visibility = Visibility.Hidden;
+                        pracownikOkno.ShowDialog();
+                        this.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        throw new Exception("Błąd sprawdzania czy to klient czy pracownik");
+                    }
                 }
                 else
                 {
@@ -93,7 +115,9 @@ namespace Nozama
         private void btnRejestruj_Click(object sender, RoutedEventArgs e)
         {
             RejestracjaOkno rejestracja = new RejestracjaOkno();
+            this.Visibility = Visibility.Hidden;
             rejestracja.ShowDialog();
+            this.Visibility = Visibility.Visible;
         }
 
 
