@@ -39,7 +39,6 @@ namespace Nozama
                 string hasło = pasHaslo.Password;
                 contact.connection.Open();
                 command = new MySqlCommand($"SELECT Haslo FROM konta WHERE Login='{login}'",contact.connection);
-                command.ExecuteNonQuery();
                 
                 MySqlDataReader dataReader = command.ExecuteReader();
                 dataReader.Read();
@@ -64,7 +63,7 @@ namespace Nozama
                     }
                     else if(dataReader.GetBoolean(0) == true)
                     {
-
+                        contact.connection.Close();
                         PracownikOkno pracownikOkno = new PracownikOkno();
                         this.Visibility = Visibility.Hidden;
                         pracownikOkno.ShowDialog();
@@ -79,6 +78,7 @@ namespace Nozama
                 {
                     MessageBox.Show("Złe hasło");
                 }
+                dataReader.Close();
                 contact.connection.Close();
             }
             catch (Exception error)
