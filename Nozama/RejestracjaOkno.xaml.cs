@@ -118,5 +118,10 @@ namespace Nozama
                 MessageBox.Show(error.Message);
             }
         }
+
+        private void btnWstecz_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
