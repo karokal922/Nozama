@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Nozama"
         mc:Ignorable="d"
-        Title="Nozana - Pracownik" Height="450" Width="800">
+        Title="Nozana - Pracownik" Height="450" Width="800" Loaded="Window_Loaded">
 
     <Window.Resources>
         <Style x:Key="DGHeaderStyle" TargetType="{x:Type DataGrid}">

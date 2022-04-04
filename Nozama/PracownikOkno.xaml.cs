@@ -27,7 +27,7 @@ namespace Nozama
             try
             {
                 MainWindow.contact.connection.Open();
-                MySqlCommand command = new MySqlCommand("Select * from konta", MainWindow.contact.connection);
+                MySqlCommand command = new MySqlCommand("SELECT zamowienie.ID_Zamowienia,ad1.Miejscowosc,ad2.Miejscowosc,paczka.Wysokosc,paczka.Szerokosc,paczka.Glebokosc,paczka.Waga FROM zamowienie,klienci as kl1,klienci as kl2,adres as ad1,adres as ad2,paczka,aktualny_status WHERE zamowienie.Paczka_ID=paczka.ID_Paczki AND zamowienie.Nadawca_ID=kl1.ID_Klienta AND kl1.Adres_ID=ad1.ID_Adresu AND zamowienie.Odbiorca_ID=kl2.ID_Klienta AND kl2.Adres_ID=ad2.ID_Adresu AND zamowienie.ID_Zamowienia=aktualny_status.Zamowienia_ID AND aktualny_status.Status_ID=1;", MainWindow.contact.connection);
                 command.ExecuteNonQuery();
                 DataTable gr = new DataTable();
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
@@ -40,10 +40,20 @@ namespace Nozama
                 MessageBox.Show(error.Message);
             }
         }
-
         private void btnWyloguj_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            dtaDostepneZlecenia.Columns[0].Header = " ID ";
+            dtaDostepneZlecenia.Columns[1].Header = " Z kąd ";
+            dtaDostepneZlecenia.Columns[2].Header = " Dokąd ";
+            dtaDostepneZlecenia.Columns[3].Header = " Wysokość ";
+            dtaDostepneZlecenia.Columns[4].Header = " Szerokość ";
+            dtaDostepneZlecenia.Columns[5].Header = " Głębokość ";
+            dtaDostepneZlecenia.Columns[6].Header = " Waga ";
         }
     }
 }

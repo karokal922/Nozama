@@ -59,6 +59,8 @@ namespace Nozama
                         KlientOkno klientOkno = new KlientOkno();
                         this.Visibility = Visibility.Hidden;
                         klientOkno.ShowDialog();
+                        txtLogin.Text = "";
+                        pasHaslo.Password = "";
                         this.Visibility = Visibility.Visible;
                     }
                     else if (dataReader.GetBoolean(0) == true)
@@ -67,6 +69,8 @@ namespace Nozama
                         PracownikOkno pracownikOkno = new PracownikOkno();
                         this.Visibility = Visibility.Hidden;
                         pracownikOkno.ShowDialog();
+                        txtLogin.Text = "";
+                        pasHaslo.Password = "";
                         this.Visibility = Visibility.Visible;
                     }
                     else
