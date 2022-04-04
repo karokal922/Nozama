@@ -161,9 +161,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="KlientOkno.xaml.cs">
+      <DependentUpon>KlientOkno.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PracownikOkno.xaml.cs">
+      <DependentUpon>PracownikOkno.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RejestracjaOkno.xaml.cs">
       <DependentUpon>RejestracjaOkno.xaml</DependentUpon>
     </Compile>
+    <Page Include="KlientOkno.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -177,6 +187,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PracownikOkno.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="RejestracjaOkno.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

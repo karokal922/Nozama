@@ -47,7 +47,11 @@ namespace Nozama
                 if (!dataReader.HasRows) { MessageBox.Show("Zły login."); }
                 else if(hasło == dataReader.GetString(0))
                 {
-                    MessageBox.Show("Udało się zalogować");
+                    //MessageBox.Show("Udało się zalogować");
+                    KlientOkno klientOkno = new KlientOkno();
+                    this.Visibility = Visibility.Hidden;
+                    klientOkno.ShowDialog();
+                    this.Visibility = Visibility.Visible;
                     //NOWE OKNO
                 }
                 else
