@@ -33,6 +33,7 @@ namespace Nozama
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
                 adapter.Fill(gr);
                 dtaDostepneZlecenia.ItemsSource = gr.DefaultView;
+                dtaDostepneZlecenia.AreRowDetailsFrozen = true;
                 MainWindow.contact.connection.Close();
             }
             catch (Exception error)
