@@ -6,6 +6,19 @@
         xmlns:local="clr-namespace:Nozama"
         mc:Ignorable="d"
         Title="Nozana - Pracownik" Height="450" Width="800">
+
+    <Window.Resources>
+        <Style x:Key="DGHeaderStyle" TargetType="{x:Type DataGrid}">
+            <Setter Property="ColumnHeaderStyle" Value="{DynamicResource DGCHeaderStyle}"/>
+        </Style>
+        <Style x:Key="DGCHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Background" Value="#FF3D3F40" />
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontFamily" Value="Calibri" />
+        </Style>
+    </Window.Resources>
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="Black" Offset="0"/>
@@ -17,7 +30,10 @@
         <Label x:Name="lblNazwaUzytkownika" Content="kkalita" HorizontalAlignment="Right" Margin="0,8,10,0" VerticalAlignment="Top" Foreground="White" FontFamily="Rockwell Extra Bold" FontSize="14" HorizontalContentAlignment="Right" Height="27"/>
         <Label Content="Dostępne zlecenia:" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14" FontWeight="Bold"/>
         <Button x:Name="btnWyloguj" Content="Wyloguj" HorizontalAlignment="Right" Margin="0,374,10,0" VerticalAlignment="Top" Width="99" Background="#FF535353" Foreground="White" FontSize="18" Height="35" Click="btnWyloguj_Click"/>
-        <DataGrid x:Name="dtaDostepneZlecenia" HorizontalAlignment="Left" Height="100" HeadersVisibility="None" Margin="10,40,0,0" VerticalAlignment="Top" Width="380" Background="#FF5D5D5D" Foreground="White"/>
+        <DataGrid x:Name="dtaDostepneZlecenia" ColumnHeaderStyle="{DynamicResource DGCHeaderStyle}" HorizontalAlignment="Left" Height="150" Margin="10,40,0,0" VerticalAlignment="Top" Width="400" Background="#FF5D5D5D" Foreground="White" MaxWidth="650" MaxHeight="150"/>
+        <Label Content="Przyjęte zlecenia:" HorizontalAlignment="Left" Margin="10,204,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14" FontWeight="Bold"/>
+        <DataGrid x:Name="dtaPrzyjeteZlecenia" ColumnHeaderStyle="{DynamicResource DGCHeaderStyle}" HorizontalAlignment="Left" Height="150" Margin="10,238,0,0" VerticalAlignment="Top" Width="400" Background="#FF5D5D5D" Foreground="White" MaxWidth="650" MaxHeight="150"/>
+        <Button x:Name="btnZmienStatus" Content="Zmień status" HorizontalAlignment="Right" Margin="0,238,257,0" VerticalAlignment="Top" Width="120" Background="#FF535353" Foreground="White" FontSize="18" Height="35"/>
 
     </Grid>
 </Window>
