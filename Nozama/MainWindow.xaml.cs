@@ -24,7 +24,7 @@ namespace Nozama
     {
         public static Connection contact = new Connection();
         MySqlCommand command;
-        
+
         public MainWindow()
         {
             InitializeComponent();
@@ -38,23 +38,41 @@ namespace Nozama
                 string login = txtLogin.Text;
                 string hasło = pasHaslo.Password;
                 contact.connection.Open();
-                command = new MySqlCommand($"SELECT Haslo FROM konta WHERE Login='{login}'",contact.connection);
-                
+                command = new MySqlCommand($"SELECT Haslo FROM konta WHERE Login='{login}'", contact.connection);
+
                 MySqlDataReader dataReader = command.ExecuteReader();
                 dataReader.Read();
                 if (!dataReader.HasRows)
-                { 
-                    MessageBox.Show("Zły login."); 
-                    dataReader.Close(); 
-                    contact.connection.Close(); 
-                }
-                else if(hasło == dataReader.GetString(0))
                 {
-                    KlientOkno klientOkno = new KlientOkno();
+                    MessageBox.Show("Zły login.");
                     dataReader.Close();
-                    this.Visibility = Visibility.Hidden;
-                    klientOkno.ShowDialog();
-                    this.Visibility = Visibility.Visible;
+                    contact.connection.Close();
+                }
+                else if (hasło == dataReader.GetString(0))
+                {
+                    dataReader.Close();
+                    command = new MySqlCommand($"SELECT Czy_Pracownik FROM konta WHERE Login='{login}' AND Haslo='{hasło}'", contact.connection);
+                    dataReader = command.ExecuteReader();
+                    dataReader.Read();
+                    if (dataReader.GetBoolean(0) == false)
+                    {
+                        KlientOkno klientOkno = new KlientOkno();
+                        this.Visibility = Visibility.Hidden;
+                        klientOkno.ShowDialog();
+                        this.Visibility = Visibility.Visible;
+                    }
+                    else if (dataReader.GetBoolean(0) == true)
+                    {
+                        contact.connection.Close();
+                        PracownikOkno pracownikOkno = new PracownikOkno();
+                        this.Visibility = Visibility.Hidden;
+                        pracownikOkno.ShowDialog();
+                        this.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        throw new Exception("Błąd sprawdzania czy to klient czy pracownik");
+                    }
                 }
                 else
                 {
@@ -84,7 +102,7 @@ namespace Nozama
                 if (!dataReader.HasRows) { MessageBox.Show("Brak paczki o podanym ID"); }
                 else
                 {
-                    MessageBox.Show("Status twojego zamówienia: "+dataReader.GetString(0));
+                    MessageBox.Show("Status twojego zamówienia: " + dataReader.GetString(0));
                 }
                 contact.connection.Close();
             }
