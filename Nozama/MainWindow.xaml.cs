@@ -50,29 +50,11 @@ namespace Nozama
                 }
                 else if(hasło == dataReader.GetString(0))
                 {
+                    KlientOkno klientOkno = new KlientOkno();
                     dataReader.Close();
-                    command = new MySqlCommand($"SELECT Czy_Pracownik FROM konta WHERE Login='{login}' AND Haslo='{hasło}'", contact.connection);
-                    dataReader = command.ExecuteReader();
-                    dataReader.Read();
-                    if (dataReader.GetBoolean(0) == false)
-                    {
-                        KlientOkno klientOkno = new KlientOkno();
-                        this.Visibility = Visibility.Hidden;
-                        klientOkno.ShowDialog();
-                        this.Visibility = Visibility.Visible;
-                    }
-                    else if(dataReader.GetBoolean(0) == true)
-                    {
-                        contact.connection.Close();
-                        PracownikOkno pracownikOkno = new PracownikOkno();
-                        this.Visibility = Visibility.Hidden;
-                        pracownikOkno.ShowDialog();
-                        this.Visibility = Visibility.Visible;
-                    }
-                    else
-                    {
-                        throw new Exception("Błąd sprawdzania czy to klient czy pracownik");
-                    }
+                    this.Visibility = Visibility.Hidden;
+                    klientOkno.ShowDialog();
+                    this.Visibility = Visibility.Visible;
                 }
                 else
                 {
