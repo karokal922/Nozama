@@ -14,6 +14,24 @@
         </LinearGradientBrush>
     </Window.Background>
     <Grid>
-        
+        <Grid x:Name="grdPaczki" HorizontalAlignment="Left" Height="215" Margin="10,10,0,0" VerticalAlignment="Top" Width="358">
+            <Label x:Name="lblPaczki" Content="Twoje zamówienia" HorizontalAlignment="Center" Margin="0,5,0,0" VerticalAlignment="Top" Height="26" Width="Auto"/>
+            <Button x:Name="btnOdswiezPaczki" Content="Odśwież" HorizontalAlignment="Stretch" Margin="10,184,10,0" VerticalAlignment="Top" Width="Auto"/>
+            <ListBox x:Name="lbxPaczki" HorizontalAlignment="Stretch" Height="143" Margin="10,36,10,0" VerticalAlignment="Top" Width="Auto"/>
+        </Grid>
+        <Grid x:Name="grdNadaj" HorizontalAlignment="Left" Height="223" Margin="424,88,0,0" VerticalAlignment="Top" Width="223">
+            <Grid x:Name="grdWymiary" Margin="0,41,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Label x:Name="lblWysokosc" Content="Wysokość" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Width="67" Height="26"/>
+                <Label x:Name="label" Content="Szerokość" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Height="23" Width="67"/>
+                <Label x:Name="label1" Content="Głębokość" HorizontalAlignment="Left" Margin="10,59,0,0" VerticalAlignment="Top" Width="67"/>
+                <Label x:Name="label2" Content="Waga" HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top" Width="67"/>
+                <TextBox x:Name="tbxWysokosc" HorizontalAlignment="Left" Height="23" Margin="82,5,5,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="txbSzerokosc" HorizontalAlignment="Left" Height="23" Margin="82,31,5,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="txbGlebokosc" HorizontalAlignment="Left" Height="23" Margin="82,59,5,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="txbWaga" HorizontalAlignment="Left" Height="23" Margin="82,89,5,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+            </Grid>
+            <Label x:Name="lblNadaj" Content="Nadaj paczkę" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
+        </Grid>
+
     </Grid>
 </Window>
