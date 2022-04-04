@@ -24,8 +24,7 @@ namespace Nozama
     {
         public static Connection contact = new Connection();
         MySqlCommand command;
-        //MySqlDataAdapter adapter;
-        //DataTable gr;
+        
         public MainWindow()
         {
             InitializeComponent();

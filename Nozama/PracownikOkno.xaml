@@ -14,6 +14,10 @@
         </LinearGradientBrush>
     </Window.Background>
     <Grid>
-        
+        <Label x:Name="lblNazwaUzytkownika" Content="kkalita" HorizontalAlignment="Right" Margin="0,8,10,0" VerticalAlignment="Top" Foreground="White" FontFamily="Rockwell Extra Bold" FontSize="14" HorizontalContentAlignment="Right" Height="27"/>
+        <Label Content="Dostępne zlecenia:" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14" FontWeight="Bold"/>
+        <Button x:Name="btnWyloguj" Content="Wyloguj" HorizontalAlignment="Right" Margin="0,374,10,0" VerticalAlignment="Top" Width="99" Background="#FF535353" Foreground="White" FontSize="18" Height="35" Click="btnWyloguj_Click"/>
+        <DataGrid x:Name="dtaDostepneZlecenia" HorizontalAlignment="Left" Height="100" HeadersVisibility="None" Margin="10,40,0,0" VerticalAlignment="Top" Width="380" Background="#FF5D5D5D" Foreground="White"/>
+
     </Grid>
 </Window>
