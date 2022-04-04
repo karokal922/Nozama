@@ -73,7 +73,7 @@ namespace Nozama
                 int id_paczki = Convert.ToInt32(txtIdPaczki.Text);
 
                 contact.connection.Open();
-                command = new MySqlCommand($"SELECT Status FROM status WHERE ID_Statusu='{id_paczki}'", contact.connection);
+                command = new MySqlCommand($"SELECT Status FROM status s,aktualny_status a,zamowienie z WHERE s.ID_Statusu=a.Status_ID AND a.Zamowienia_ID=z.ID_Zamowienia AND ID_Zamowienia='{id_paczki}'", contact.connection);
                 command.ExecuteNonQuery();
 
                 MySqlDataReader dataReader = command.ExecuteReader();
@@ -81,7 +81,7 @@ namespace Nozama
                 if (!dataReader.HasRows) { MessageBox.Show("Brak paczki o podanym ID"); }
                 else
                 {
-                    MessageBox.Show(dataReader.GetString(0));
+                    MessageBox.Show("Status twojego zamówienia: "+dataReader.GetString(0));
                 }
                 contact.connection.Close();
             }
