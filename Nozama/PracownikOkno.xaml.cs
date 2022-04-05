@@ -55,5 +55,43 @@ namespace Nozama
             dtaDostepneZlecenia.Columns[5].Header = " Głębokość ";
             dtaDostepneZlecenia.Columns[6].Header = " Waga ";
         }
+
+        private void btnZmienStatus_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (dtaPrzyjeteZlecenia.SelectedItem == null) //Jeżeli nie jest wybrany wiersz wyrzuć wyjątek
+                {
+                    throw new InvalidOperationException("Brak wybranego wiersza");
+                }
+
+                string _nowyStatus = Microsoft.VisualBasic.Interaction.InputBox("Podaj nowy status zamówienia\n1: Nadane\n2: W trakcie\n3: Odebrane", "Zmień Status", "1");
+                int _nowyStatusNumer = Convert.ToInt32(_nowyStatus);
+
+                if(Enum.IsDefined(typeof(Typy.EnumStatus), _nowyStatusNumer))
+                {
+                    Typy.EnumStatus nowyStatusNumer = (Typy.EnumStatus)_nowyStatusNumer;
+                }
+                else
+                {
+                    throw new Exception("DUPA");
+                }
+
+                //MySqlCommand command = new MySqlCommand("", MainWindow.contact.connection); //Zmień status
+
+            }
+            catch(InvalidOperationException exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            catch(FormatException)
+            {
+                MessageBox.Show("Wartość statusu jest nieprawidłowa, musi być liczbą całkowitą");
+            }
+            catch(Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+        }
     }
 }

@@ -68,6 +68,7 @@ namespace Nozama
                         contact.connection.Close();
                         PracownikOkno pracownikOkno = new PracownikOkno();
                         this.Visibility = Visibility.Hidden;
+                        pracownikOkno.lblNazwaUzytkownika.Content = login;
                         pracownikOkno.ShowDialog();
                         txtLogin.Text = "";
                         pasHaslo.Password = "";

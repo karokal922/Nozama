@@ -33,7 +33,7 @@
         <DataGrid x:Name="dtaDostepneZlecenia" RowBackground="Transparent" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False"  HeadersVisibility="Column" ColumnHeaderStyle="{DynamicResource DGCHeaderStyle}" HorizontalAlignment="Left" Height="150" Margin="10,40,0,0" VerticalAlignment="Top" Width="550" Background="#FF5D5D5D" Foreground="White" MaxWidth="550" MaxHeight="150"/>
         <Label Content="Przyjęte zlecenia:" HorizontalAlignment="Left" Margin="10,204,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14" FontWeight="Bold"/>
         <DataGrid x:Name="dtaPrzyjeteZlecenia" RowBackground="Transparent" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" HeadersVisibility="Column" ColumnHeaderStyle="{DynamicResource DGCHeaderStyle}" HorizontalAlignment="Left"  Height="150" Margin="10,238,0,0" VerticalAlignment="Top" Width="550" Background="#FF5D5D5D" Foreground="White" MaxWidth="550" MaxHeight="150"/>
-        <Button x:Name="btnZmienStatus" Content="Zmień status" HorizontalAlignment="Right" Margin="0,238,10,0" VerticalAlignment="Top" Width="120" Background="#FF535353" Foreground="White" FontSize="18" Height="35"/>
+        <Button x:Name="btnZmienStatus" Content="Zmień status" HorizontalAlignment="Right" Margin="0,238,10,0" VerticalAlignment="Top" Width="120" Background="#FF535353" Foreground="White" FontSize="18" Height="35" Click="btnZmienStatus_Click"/>
 
     </Grid>
 </Window>
