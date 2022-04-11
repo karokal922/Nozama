@@ -45,7 +45,7 @@ namespace Nozama
         {
             lblNazwaUzytkownika.Content = nazwaKonta;
             MainWindow.contact.connection.Open();
-            var command = new MySqlCommand("", MainWindow.contact.connection);
+            var command = new MySqlCommand($"SELECT ID_Kuriera FROM kurier WHERE kurier.Konto_ID={id}; ", MainWindow.contact.connection);
             MySqlDataReader dataReader = command.ExecuteReader();
             dataReader.Read();
             IDKuriera = (int)dataReader.GetValue(0);
@@ -110,9 +110,9 @@ namespace Nozama
         public decimal ObliczCeneDostawy(double x,double y,double z, double masa, double dystans)
         {
             decimal cenaKoncowa = 0;
-            cenaKoncowa+=(decimal)(dystans*cenaZa1km);
-            cenaKoncowa += (decimal)(masa*cenaZa1kg);
-            cenaKoncowa += (decimal)((x*y*z/1000000)*cenaZaMetrSzescienny);
+            cenaKoncowa += (decimal)(dystans * cenaZa1km);
+            cenaKoncowa += (decimal)(masa * cenaZa1kg);
+            cenaKoncowa += (decimal)((x * y * z / 1000000) * cenaZaMetrSzescienny);
             return cenaKoncowa;
         }
         private void btnZaakceptuj_Click(object sender, RoutedEventArgs e)
@@ -133,11 +133,12 @@ namespace Nozama
                     double wymiarY = (double)dostepneZLEC.Rows[zaznaczonyIndex][4];
                     double wymiarZ = (double)dostepneZLEC.Rows[zaznaczonyIndex][5];
                     double waga = (double)dostepneZLEC.Rows[zaznaczonyIndex][6];
-                    decimal cenaZamowienia = ObliczCeneDostawy(wymiarX, wymiarY, wymiarZ, waga, losowyDystans);
-
+                    decimal cenaZamowienia = Math.Floor(ObliczCeneDostawy(wymiarX, wymiarY, wymiarZ, waga, losowyDystans));
                     MainWindow.contact.connection.Open();
-                    //MySqlCommand command = new MySqlCommand("", MainWindow.contact.connection);
+                    MySqlCommand command = new MySqlCommand($"UPDATE `zamowienie` SET `Kurier_ID` = '{IDKuriera}', `Dystans` = '{losowyDystans}', `Cena` = '{cenaZamowienia}' WHERE `zamowienie`.`ID_Zamowienia` = {idZaznaczonegoZamowienia}; ", MainWindow.contact.connection);
+                    command.ExecuteNonQuery();
                     MainWindow.contact.connection.Close();
+                    MessageBox.Show(cenaZamowienia.ToString());
                 }
             }
             catch (InvalidOperationException exception)
