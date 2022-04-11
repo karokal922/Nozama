@@ -27,13 +27,14 @@
         </LinearGradientBrush>
     </Window.Background>
     <Grid>
-        <Label x:Name="lblNazwaUzytkownika" Content="kkalita" HorizontalAlignment="Right" Margin="0,8,10,0" VerticalAlignment="Top" Foreground="White" FontFamily="Rockwell Extra Bold" FontSize="14" HorizontalContentAlignment="Right" Height="27"/>
+        <Label x:Name="lblNazwaUzytkownika" Content="" HorizontalAlignment="Right" Margin="0,8,10,0" VerticalAlignment="Top" Foreground="White" FontFamily="Rockwell Extra Bold" FontSize="14" HorizontalContentAlignment="Right" Height="27"/>
         <Label Content="Dostępne zlecenia:" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14" FontWeight="Bold"/>
-        <Button x:Name="btnWyloguj" Content="Wyloguj" HorizontalAlignment="Right" Margin="0,353,10,0" VerticalAlignment="Top" Width="99" Background="#FF535353" Foreground="White" FontSize="18" Height="35" Click="btnWyloguj_Click"/>
-        <DataGrid x:Name="dtaDostepneZlecenia" RowBackground="Transparent" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False"  HeadersVisibility="Column" ColumnHeaderStyle="{DynamicResource DGCHeaderStyle}" HorizontalAlignment="Left" Height="150" Margin="10,40,0,0" VerticalAlignment="Top" Width="550" Background="#FF5D5D5D" Foreground="White" MaxWidth="550" MaxHeight="150"/>
+        <Button x:Name="btnWyloguj" Content="Wyloguj" HorizontalAlignment="Right" Margin="0,353,10,0" VerticalAlignment="Top" Width="120" Background="#FF535353" Foreground="White" FontSize="18" Height="35" Click="btnWyloguj_Click"/>
+        <DataGrid x:Name="dtaDostepneZlecenia" SelectionMode="Single" RowBackground="Transparent" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False"  HeadersVisibility="Column" ColumnHeaderStyle="{DynamicResource DGCHeaderStyle}" HorizontalAlignment="Left" Height="150" Margin="10,40,0,0" VerticalAlignment="Top" Width="550" Background="#FF5D5D5D" Foreground="White" MaxWidth="550" MaxHeight="150"/>
         <Label Content="Przyjęte zlecenia:" HorizontalAlignment="Left" Margin="10,204,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14" FontWeight="Bold"/>
-        <DataGrid x:Name="dtaPrzyjeteZlecenia" RowBackground="Transparent" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" HeadersVisibility="Column" ColumnHeaderStyle="{DynamicResource DGCHeaderStyle}" HorizontalAlignment="Left"  Height="150" Margin="10,238,0,0" VerticalAlignment="Top" Width="550" Background="#FF5D5D5D" Foreground="White" MaxWidth="550" MaxHeight="150"/>
+        <DataGrid x:Name="dtaPrzyjeteZlecenia" SelectionMode="Single" RowBackground="Transparent" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" HeadersVisibility="Column" ColumnHeaderStyle="{DynamicResource DGCHeaderStyle}" HorizontalAlignment="Left"  Height="150" Margin="10,238,0,0" VerticalAlignment="Top" Width="550" Background="#FF5D5D5D" Foreground="White" MaxWidth="550" MaxHeight="150"/>
         <Button x:Name="btnZmienStatus" Content="Zmień status" HorizontalAlignment="Right" Margin="0,238,10,0" VerticalAlignment="Top" Width="120" Background="#FF535353" Foreground="White" FontSize="18" Height="35" Click="btnZmienStatus_Click"/>
+        <Button x:Name="btnZaakceptuj" Content="Akceptuj" HorizontalAlignment="Right" Margin="0,40,10,0" VerticalAlignment="Top" Width="120" Background="#FF535353" Foreground="White" FontSize="18" Height="35" Click="btnZaakceptuj_Click"/>
 
     </Grid>
 </Window>

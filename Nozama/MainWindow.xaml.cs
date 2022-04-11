@@ -51,9 +51,10 @@ namespace Nozama
                 else if (hasło == dataReader.GetString(0))
                 {
                     dataReader.Close();
-                    command = new MySqlCommand($"SELECT Czy_Pracownik FROM konta WHERE Login='{login}' AND Haslo='{hasło}'", contact.connection);
+                    command = new MySqlCommand($"SELECT Czy_Pracownik,ID_Konta FROM konta WHERE Login='{login}' AND Haslo='{hasło}'", contact.connection);
                     dataReader = command.ExecuteReader();
                     dataReader.Read();
+                    int idKonta = (int)dataReader.GetValue(1);
                     if (dataReader.GetBoolean(0) == false)
                     {
                         KlientOkno klientOkno = new KlientOkno();
@@ -66,7 +67,7 @@ namespace Nozama
                     else if (dataReader.GetBoolean(0) == true)
                     {
                         contact.connection.Close();
-                        PracownikOkno pracownikOkno = new PracownikOkno();
+                        PracownikOkno pracownikOkno = new PracownikOkno(txtLogin.Text,idKonta);
                         this.Visibility = Visibility.Hidden;
                         pracownikOkno.lblNazwaUzytkownika.Content = login;
                         pracownikOkno.ShowDialog();
