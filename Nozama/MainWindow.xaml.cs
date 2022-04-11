@@ -126,6 +126,14 @@ namespace Nozama
             this.Visibility = Visibility.Visible;
         }
 
+        private void pasHaslo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                btnLoguj_Click(sender,e);
+            }
+        }
+
 
 
         /*private void btnPoka_Click(object sender, RoutedEventArgs e)
