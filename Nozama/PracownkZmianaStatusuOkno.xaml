@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Nozama"
         mc:Ignorable="d"
-        Title="Zmiana Statusu" Height="200" Width="400" ResizeMode="NoResize">
+        Title="Zmiana Statusu" Height="200" Width="250" ResizeMode="NoResize">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="Black" Offset="0"/>
@@ -14,8 +14,11 @@
         </LinearGradientBrush>
     </Window.Background>
     <Grid>
-        <Label Content="Zmiana statusu na:" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14" FontWeight="Bold"/>
-        <Button x:Name="btnOK" Content="OK" HorizontalAlignment="Right" Margin="0,120,17,0" VerticalAlignment="Top" Width="69" Background="#FF535353" Foreground="White" FontSize="18" Height="33"/>
+        <Label Content="Zmiana statusu na:" HorizontalAlignment="Left" Margin="26,20,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14" FontWeight="Bold"/>
+        <Button x:Name="btnOK" Content="OK" Margin="150,111,25,27" Background="#FF535353" Foreground="White" FontSize="18" Click="btnOK_Click"/>
+        <RadioButton x:Name="radObebrane" Content="Odebrane" HorizontalAlignment="Left" Margin="26,54,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <RadioButton x:Name="radWDrodze" Content="W drodze" HorizontalAlignment="Left" Margin="26,74,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <RadioButton x:Name="radDostarczone" Content="Dostarczone" HorizontalAlignment="Left" Margin="26,94,0,0" VerticalAlignment="Top" Foreground="White"/>
 
     </Grid>
 </Window>

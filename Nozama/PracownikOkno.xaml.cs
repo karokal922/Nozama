@@ -90,6 +90,7 @@ namespace Nozama
             UstawTytułyKolumnPrzyjetymZleceniom();
         }
         public static int nowyStatus;
+
         private void btnZmienStatus_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -99,9 +100,36 @@ namespace Nozama
                     throw new InvalidOperationException("Brak wybranego wiersza");
                 }
                 int zaznaczonyIndexZaakceptowanego = dtaPrzyjeteZlecenia.SelectedIndex;
-                int idZaznaczonegoZamowieniaZaakceptowanego = (int)dostepneZLEC.Rows[zaznaczonyIndexZaakceptowanego][0];
+                int idZaznaczonegoZamowieniaZaakceptowanego = (int)zaakceptowaneZLEC.Rows[zaznaczonyIndexZaakceptowanego][0];
+                MainWindow.contact.connection.Open();
+                MySqlCommand command = new MySqlCommand($"SELECT `Status_ID` FROM `aktualny_status` WHERE Zamowienia_ID='{idZaznaczonegoZamowieniaZaakceptowanego}';", MainWindow.contact.connection);
+                MySqlDataReader dataReader = command.ExecuteReader();
+                dataReader.Read();
+                int idStaregoStatustu = (int)dataReader.GetValue(0);
+                dataReader.Close();
+                MainWindow.contact.connection.Close();
                 
-                //MySqlCommand command = new MySqlCommand("", MainWindow.contact.connection); //Zmień status
+                PracownkZmianaStatusuOkno statusOkno = new PracownkZmianaStatusuOkno(idStaregoStatustu);
+                statusOkno.ShowDialog();//Nie wiadomo ile czasu pracownik bedzie w oknie zmiany statusu, więc zamykam polaczenie 
+
+                if (nowyStatus > 0 && nowyStatus < 6)
+                {
+                    MainWindow.contact.connection.Open();
+                    command = new MySqlCommand($"UPDATE `aktualny_status` SET `Status_ID`='{nowyStatus}' WHERE `Zamowienia_ID`='{idZaznaczonegoZamowieniaZaakceptowanego}'; ", MainWindow.contact.connection);
+                    command.ExecuteNonQuery();
+
+                    CzyscPrzyjeteZleceniaGrid();
+
+                    command = new MySqlCommand($"SELECT zamowienie.ID_Zamowienia,ad1.Miejscowosc,ad2.Miejscowosc,paczka.Wysokosc,paczka.Szerokosc,paczka.Glebokosc,paczka.Waga,status.Status,zamowienie.Cena FROM zamowienie,klienci as kl1,klienci as kl2,adres as ad1,adres as ad2,paczka,aktualny_status,status WHERE zamowienie.Paczka_ID=paczka.ID_Paczki AND zamowienie.Nadawca_ID=kl1.ID_Klienta AND kl1.Adres_ID=ad1.ID_Adresu AND zamowienie.Odbiorca_ID=kl2.ID_Klienta AND kl2.Adres_ID=ad2.ID_Adresu AND zamowienie.ID_Zamowienia=aktualny_status.Zamowienia_ID AND aktualny_status.Status_ID!=1 AND aktualny_status.Status_ID!=5 and zamowienie.Kurier_ID={IDKuriera} AND aktualny_status.Status_ID=status.ID_Statusu; ", MainWindow.contact.connection);
+                    command.ExecuteNonQuery();
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                    zaakceptowaneZLEC.Clear();
+                    adapter.Fill(zaakceptowaneZLEC);
+                    dtaPrzyjeteZlecenia.ItemsSource = zaakceptowaneZLEC.DefaultView;
+                    MainWindow.contact.connection.Close();
+
+                    UstawTytułyKolumnPrzyjetymZleceniom();
+                }
             }
             catch(InvalidOperationException exception)
             {
