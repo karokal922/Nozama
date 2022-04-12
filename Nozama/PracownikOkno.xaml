@@ -35,7 +35,6 @@
         <DataGrid x:Name="dtaPrzyjeteZlecenia" SelectionMode="Single" RowBackground="Transparent" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" HeadersVisibility="Column" ColumnHeaderStyle="{DynamicResource DGCHeaderStyle}" HorizontalAlignment="Left"  Height="150" Margin="10,238,0,0" VerticalAlignment="Top" Width="550" Background="#FF5D5D5D" Foreground="White" MaxWidth="550" MaxHeight="150"/>
         <Button x:Name="btnZmienStatus" Content="Zmień status" HorizontalAlignment="Right" Margin="0,238,10,0" VerticalAlignment="Top" Width="120" Background="#FF535353" Foreground="White" FontSize="18" Height="35" Click="btnZmienStatus_Click"/>
         <Button x:Name="btnZaakceptuj" Content="Akceptuj" HorizontalAlignment="Right" Margin="0,40,10,0" VerticalAlignment="Top" Width="120" Background="#FF535353" Foreground="White" FontSize="18" Height="35" Click="btnZaakceptuj_Click"/>
-        <Button x:Name="btnTest" Content="Button" HorizontalAlignment="Left" Margin="678,137,0,0" VerticalAlignment="Top" Width="75" Click="btnTest_Click"/>
 
     </Grid>
 </Window>

@@ -168,10 +168,12 @@
     <Compile Include="PracownikOkno.xaml.cs">
       <DependentUpon>PracownikOkno.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PracownkZmianaStatusuOkno.xaml.cs">
+      <DependentUpon>PracownkZmianaStatusuOkno.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RejestracjaOkno.xaml.cs">
       <DependentUpon>RejestracjaOkno.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Typy.cs" />
     <Page Include="KlientOkno.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -190,6 +192,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="PracownikOkno.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PracownkZmianaStatusuOkno.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

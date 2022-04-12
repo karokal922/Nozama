@@ -62,7 +62,7 @@ namespace Nozama
         {
             this.Close();
         }
-        public void UstawTytułyKolumn()
+        public void UstawTytułyKolumnDostepnymZleceniom()
         {
             dtaDostepneZlecenia.Columns[0].Header = " ID ";
             dtaDostepneZlecenia.Columns[1].Header = " Z kąd ";
@@ -71,7 +71,9 @@ namespace Nozama
             dtaDostepneZlecenia.Columns[4].Header = " Szerokość ";
             dtaDostepneZlecenia.Columns[5].Header = " Głębokość ";
             dtaDostepneZlecenia.Columns[6].Header = " Waga ";
-
+        }
+        public void UstawTytułyKolumnPrzyjetymZleceniom()
+        {
             dtaPrzyjeteZlecenia.Columns[0].Header = " ID ";
             dtaPrzyjeteZlecenia.Columns[1].Header = " Z kąd ";
             dtaPrzyjeteZlecenia.Columns[2].Header = " Dokąd ";
@@ -84,9 +86,10 @@ namespace Nozama
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            UstawTytułyKolumn();
+            UstawTytułyKolumnDostepnymZleceniom();
+            UstawTytułyKolumnPrzyjetymZleceniom();
         }
-
+        public static int nowyStatus;
         private void btnZmienStatus_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -95,29 +98,14 @@ namespace Nozama
                 {
                     throw new InvalidOperationException("Brak wybranego wiersza");
                 }
-
-                string _nowyStatus = Microsoft.VisualBasic.Interaction.InputBox("Podaj nowy status zamówienia\n1: Nadane\n2: W trakcie\n3: Odebrane", "Zmień Status", "1");
-                int _nowyStatusNumer = Convert.ToInt32(_nowyStatus);
-
-                if(Enum.IsDefined(typeof(Typy.EnumStatus), _nowyStatusNumer))
-                {
-                    Typy.EnumStatus nowyStatusNumer = (Typy.EnumStatus)_nowyStatusNumer;
-                }
-                else
-                {
-                    throw new Exception("DUPA");
-                }
-
+                int zaznaczonyIndexZaakceptowanego = dtaPrzyjeteZlecenia.SelectedIndex;
+                int idZaznaczonegoZamowieniaZaakceptowanego = (int)dostepneZLEC.Rows[zaznaczonyIndexZaakceptowanego][0];
+                
                 //MySqlCommand command = new MySqlCommand("", MainWindow.contact.connection); //Zmień status
-
             }
             catch(InvalidOperationException exception)
             {
                 MessageBox.Show(exception.Message);
-            }
-            catch(FormatException)
-            {
-                MessageBox.Show("Wartość statusu jest nieprawidłowa, musi być liczbą całkowitą");
             }
             catch(Exception exception)
             {
@@ -188,7 +176,8 @@ namespace Nozama
                     adapter1.Fill(dostepneZLEC);
                     dtaDostepneZlecenia.ItemsSource = dostepneZLEC.DefaultView;
 
-                    UstawTytułyKolumn();
+                    UstawTytułyKolumnDostepnymZleceniom();
+                    UstawTytułyKolumnPrzyjetymZleceniom();
 
                     MainWindow.contact.connection.Close();
                 }
@@ -201,12 +190,6 @@ namespace Nozama
             {
                 MessageBox.Show(exception.Message);
             }
-        }
-
-        private void btnTest_Click(object sender, RoutedEventArgs e)
-        {
-            CzyscPrzyjeteZleceniaGrid();
-            CzyscDostepneZleceniaGrid();
         }
     }
 }
