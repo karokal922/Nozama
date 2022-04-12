@@ -14,23 +14,36 @@
         </LinearGradientBrush>
     </Window.Background>
     <Grid>
-        <Grid x:Name="grdPaczki" HorizontalAlignment="Left" Height="215" Margin="10,10,0,0" VerticalAlignment="Top" Width="358">
-            <Label x:Name="lblPaczki" Content="Twoje zamówienia" HorizontalAlignment="Center" Margin="0,5,0,0" VerticalAlignment="Top" Height="26" Width="Auto"/>
-            <Button x:Name="btnOdswiezPaczki" Content="Odśwież" HorizontalAlignment="Stretch" Margin="10,184,10,0" VerticalAlignment="Top" Width="Auto"/>
-            <ListBox x:Name="lbxPaczki" HorizontalAlignment="Stretch" Height="143" Margin="10,36,10,0" VerticalAlignment="Top" Width="Auto"/>
+        <Grid x:Name="grdZamówienia" HorizontalAlignment="Left" Height="381" Margin="10,10,0,0" VerticalAlignment="Top" Width="358">
+            <Label x:Name="lblPaczki" Content="Twoje zamówienia" HorizontalAlignment="Center" Margin="0,5,0,0" VerticalAlignment="Top" Height="26" Width="Auto" Foreground="White"/>
+            <Button x:Name="btnOdswiezPaczki" Content="Odśwież" HorizontalAlignment="Stretch" Margin="10,354,10,0" VerticalAlignment="Top" Width="Auto"/>
+            <ListBox x:Name="lbxPaczki" HorizontalAlignment="Stretch" Height="313" Margin="10,36,10,0" VerticalAlignment="Top" Width="Auto"/>
         </Grid>
-        <Grid x:Name="grdNadaj" HorizontalAlignment="Left" Height="223" Margin="424,88,0,0" VerticalAlignment="Top" Width="223">
-            <Grid x:Name="grdWymiary" Margin="0,41,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
-                <Label x:Name="lblWysokosc" Content="Wysokość" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Width="67" Height="26"/>
-                <Label x:Name="label" Content="Szerokość" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Height="23" Width="67"/>
-                <Label x:Name="label1" Content="Głębokość" HorizontalAlignment="Left" Margin="10,59,0,0" VerticalAlignment="Top" Width="67"/>
-                <Label x:Name="label2" Content="Waga" HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top" Width="67"/>
-                <TextBox x:Name="tbxWysokosc" HorizontalAlignment="Left" Height="23" Margin="82,5,5,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-                <TextBox x:Name="txbSzerokosc" HorizontalAlignment="Left" Height="23" Margin="82,31,5,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-                <TextBox x:Name="txbGlebokosc" HorizontalAlignment="Left" Height="23" Margin="82,59,5,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-                <TextBox x:Name="txbWaga" HorizontalAlignment="Left" Height="23" Margin="82,89,5,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Grid x:Name="grdNadaj" HorizontalAlignment="Left" Height="349" Margin="373,10,0,0" VerticalAlignment="Top">
+            <Grid x:Name="grdPaczka" Margin="20,41,20,0" HorizontalAlignment="Center" VerticalAlignment="Top" Height="123">
+                <Label x:Name="lblWysokosc" Content="Wysokość" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Width="67" Height="26" Foreground="White"/>
+                <Label x:Name="label" Content="Szerokość" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="67" Foreground="White"/>
+                <Label x:Name="label1" Content="Głębokość" HorizontalAlignment="Left" Margin="10,59,0,0" VerticalAlignment="Top" Width="67" Foreground="White"/>
+                <Label x:Name="label2" Content="Waga" HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top" Width="67" Foreground="White"/>
+                <TextBox x:Name="txbWysokosc" HorizontalAlignment="Left" Height="23" Margin="82,5,5,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="txbSzerokosc" HorizontalAlignment="Left" Height="23" Margin="82,31,5,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="txbGlebokosc" HorizontalAlignment="Left" Height="23" Margin="82,59,5,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="txbWaga" HorizontalAlignment="Left" Height="23" Margin="82,89,5,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
             </Grid>
-            <Label x:Name="lblNadaj" Content="Nadaj paczkę" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
+            <Label x:Name="lblNadaj" Content="Nadaj paczkę" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" Foreground="White"/>
+            <Grid x:Name="grdAdres" Margin="24,169,24,0" HorizontalAlignment="Center" VerticalAlignment="Top" Height="143">
+                <TextBox x:Name="txbMiejscowosc" HorizontalAlignment="Left" Height="23" Margin="100,5,5,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="txbKodP" HorizontalAlignment="Left" Height="23" Margin="100,31,5,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="txbUlica" HorizontalAlignment="Left" Height="23" Margin="100,59,5,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="txbNrM" HorizontalAlignment="Left" Height="23" Margin="100,88,5,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <Label x:Name="lblMiejscowosc" Content="Miejscowosc" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top" Foreground="White"/>
+                <Label x:Name="lblKodP" Content="Kod Pocztowy" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Foreground="White"/>
+                <Label x:Name="lblUlica" Content="Ulica" HorizontalAlignment="Left" Margin="10,59,0,0" VerticalAlignment="Top" Foreground="White"/>
+                <Label x:Name="lblNrM" Content="Nr Mieszkania" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" Foreground="White"/>
+                <Label x:Name="lblNrB" Content="Nr Budynku" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" Foreground="White"/>
+                <TextBox x:Name="txbNrB" HorizontalAlignment="Left" Height="23" Margin="100,114,5,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            </Grid>
+            <Button x:Name="btnWyslij" Content="Wyslij" HorizontalAlignment="Center" Margin="50,317,50,0" VerticalAlignment="Top" Width="75" Click="btnWyslij_Click"/>
         </Grid>
 
     </Grid>
