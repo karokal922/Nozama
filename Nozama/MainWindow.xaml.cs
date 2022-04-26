@@ -57,7 +57,8 @@ namespace Nozama
                     int idKonta = (int)dataReader.GetValue(1);
                     if (dataReader.GetBoolean(0) == false)
                     {
-                        KlientOkno klientOkno = new KlientOkno();
+                        contact.connection.Close();
+                        KlientOkno klientOkno = new KlientOkno(txtLogin.Text,idKonta);
                         this.Visibility = Visibility.Hidden;
                         klientOkno.ShowDialog();
                         txtLogin.Text = "";
