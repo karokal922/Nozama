@@ -188,13 +188,21 @@ namespace Nozama
             return command.LastInsertedId;
         }
 
-        private void StworzZamowienie(string idOdbiorca, string idPaczka)
+        private long StworzZamowienie(string idOdbiorca, string idPaczka)
         {
             /* Tworzy rekord zamówienia*/
 
             MySqlCommand command = MainWindow.contact.connection.CreateCommand();
             command.CommandText = $"INSERT INTO zamowienie (ID_Zamowienia, Nadawca_ID, Odbiorca_ID, Paczka_ID, Kurier_ID, Dystans, Data_odbioru, Data_dostawy, Cena) VALUES (NULL, {this.idKlienta}, {idOdbiorca}, {idPaczka}, NULL, NULL, NULL, NULL, NULL)";
+            command.ExecuteNonQuery();
 
+            return command.LastInsertedId;
+        }
+
+        private void StworzStatus(string idZamowienia)
+        {
+            MySqlCommand command = MainWindow.contact.connection.CreateCommand();
+            command.CommandText = $"INSERT INTO aktualny_status (Status_ID, Zamowienia_ID) VALUES (1, {idZamowienia})";
             command.ExecuteNonQuery();
         }
 
@@ -235,7 +243,9 @@ namespace Nozama
 
                 long idOdbiorcy = StworzKlienta(odbiorcaImie, odbiorcaNazwisko, odbiorcaNumer, idAdresu);
 
-                StworzZamowienie(idOdbiorcy.ToString(), idPaczki.ToString());
+                long idZamowienia = StworzZamowienie(idOdbiorcy.ToString(), idPaczki.ToString());
+
+                StworzStatus(idZamowienia.ToString());
 
                 MessageBox.Show("Zamówienie zostało pomyślnie utworzone");
             }
