@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using System.Text.RegularExpressions;
+using System.Data;
 
 namespace Nozama
 {
@@ -27,6 +28,8 @@ namespace Nozama
         private string imieKlienta;
         private string nazwiskoKlienta;
         private int idKlienta;
+
+        private DataTable Zamowienia = new DataTable();
 
         private KlientOkno()
         {
@@ -51,6 +54,8 @@ namespace Nozama
             lblNazwaUzytkownika.Content = $"{imieKlienta} {nazwiskoKlienta} [{nazwaKonta}]";
 
             reader.Close();
+
+            PobierzZamowieniaUzytkownika();
         }
 
         /* IsFormEmpty() iteruje pomiędzy elementami gridów z danymi i sprawdza czy któryś z TextBoxów nie jest pusty */
@@ -113,7 +118,28 @@ namespace Nozama
             {
                 throw new FormatException(message_address);
             }
+            string message_phone;
+            if (!IsPhoneNumberValid(out message_phone))
+            {
+                throw new FormatException(message_phone);
+            }
             /* Sprawdź wszystkie pola i warunki i wyrzuć wyjątek jesli coś jest źle */
+        }
+
+        private bool IsPhoneNumberValid(out string mes)
+        {
+            string patternTelefon = @"[0-9]{9}";
+            Regex reg = new Regex(patternTelefon);
+
+            MatchCollection matched = reg.Matches(txbNumerKontaktowy.Text);
+
+            if (matched.Count == 0 || txbNumerKontaktowy.Text.Length != 9)
+            {
+                mes = "Niepoprawny numer telefonu";
+                return false;
+            }
+            mes = "";
+            return true;
         }
 
         /* IsPackageValid() sprawdza czy dane z textBoxow z grida z danymi paczki są poprawne */
@@ -206,6 +232,19 @@ namespace Nozama
             command.ExecuteNonQuery();
         }
 
+        private void PobierzZamowieniaUzytkownika()
+        {
+            /* Jeżeli zamówienia już są wyświetlane to wyczyśc listę */
+            Zamowienia.Clear();
+
+            /* Pobierz paczki które użytkownik wysłał */
+            var command = new MySqlCommand($"SELECT z.ID_Zamowienia, s.Status, adr.Miejscowosc, pa.Wysokosc, pa.Szerokosc, pa.Glebokosc, pa.Waga FROM zamowienie z, status s, aktualny_status akts, adres adr, klienci kl, paczka pa WHERE z.Nadawca_ID = {idKlienta} AND akts.Zamowienia_ID = z.ID_Zamowienia AND akts.Status_ID = s.ID_Statusu AND kl.ID_Klienta = z.Odbiorca_ID AND adr.ID_Adresu = kl.Adres_ID And pa.ID_Paczki = z.Paczka_ID", MainWindow.contact.connection);
+            command.ExecuteNonQuery();
+            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+            adapter.Fill(Zamowienia);
+            dtaZamowienia.ItemsSource = Zamowienia.DefaultView;
+        }
+
         private void btnWyslij_Click(object sender, RoutedEventArgs e)
         {
             bool Validated = true;
@@ -247,6 +286,8 @@ namespace Nozama
 
                 StworzStatus(idZamowienia.ToString());
 
+                PobierzZamowieniaUzytkownika();
+
                 MessageBox.Show("Zamówienie zostało pomyślnie utworzone");
             }
 
@@ -254,14 +295,12 @@ namespace Nozama
 
         private void btnOdswiezPaczki_Click(object sender, RoutedEventArgs e)
         {
-            /* Pobierz paczki które użytkownik wysłał */
-            var command = new MySqlCommand($"SELECT z.Nadawca_ID, z.Odbiorca_ID FROM zamowienie z WHERE z.Nadawca_ID = {idKonta}", MainWindow.contact.connection);
-            MySqlDataReader reader =  command.ExecuteReader();
-            while (reader.Read())
-            {
-                
-            }
-            reader.Close();
+            PobierzZamowieniaUzytkownika();
+        }
+
+        private void btnWyloguj_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
