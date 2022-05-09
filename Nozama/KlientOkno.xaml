@@ -25,46 +25,49 @@
     <Grid>
         <Grid x:Name="grdZamówienia" HorizontalAlignment="Left" Height="364" Margin="10,10,0,0" VerticalAlignment="Top" Width="358">
             <Label x:Name="lblPaczki" Content="Twoje zamówienia" HorizontalAlignment="Center" Margin="0,8,0,0" VerticalAlignment="Top" Height="26" Width="Auto" Foreground="White" FontWeight="Bold"/>
-            <Button x:Name="btnOdswiezPaczki" Content="Odśwież" HorizontalAlignment="Stretch" Margin="16,339,22,0" VerticalAlignment="Top" Width="Auto" Click="btnOdswiezPaczki_Click" Background="#FF8A8A8A" Foreground="White" BorderBrush="Black"/>
-            <Label x:Name="lblNazwaUzytkownika" Content="NazwaUż" HorizontalAlignment="Left" Margin="10,365,0,-29" VerticalAlignment="Top" Width="338" Foreground="White" FontWeight="Bold" FontStyle="Italic" FontSize="14" Background="#191A8A26"/>
+            <Button x:Name="btnOdswiezPaczki" Content="Odśwież" HorizontalAlignment="Stretch" Margin="16,339,22,0" VerticalAlignment="Top" Width="Auto" Click="btnOdswiezPaczki_Click" Background="#FF535353" Foreground="White"/>
+            <Label x:Name="lblNazwaUzytkownika" Content="NazwaUż" HorizontalAlignment="Left" Margin="10,365,0,-29" VerticalAlignment="Top" Width="338" Foreground="White" FontWeight="Bold" FontStyle="Italic" FontSize="14" Background="#FF455747" BorderBrush="Black"/>
             <DataGrid x:Name="dtaZamowienia" SelectionMode="Single" RowBackground="Transparent" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False"  HeadersVisibility="Column" ColumnHeaderStyle="{DynamicResource DGCHeaderStyle}" HorizontalAlignment="Center" Height="295" Margin="16,39,22,0" VerticalAlignment="Top" Width="320" Background="#FF5D5D5D" Foreground="White" MaxWidth="550" MaxHeight="800
                       " RenderTransformOrigin="0.526,0.777"/>
         </Grid>
-        <Grid x:Name="grdNadaj" HorizontalAlignment="Left" Height="349" Margin="373,10,0,0" VerticalAlignment="Top" Width="287">
-            <Grid x:Name="grdPaczka" Margin="31,41,31,0" HorizontalAlignment="Center" VerticalAlignment="Top" Height="123" Width="225">
+        <Grid x:Name="grdNadaj" HorizontalAlignment="Left" Height="401" Margin="373,10,0,0" VerticalAlignment="Top" Width="287">
+            <Grid x:Name="grdPaczka" Margin="31,67,31,0" HorizontalAlignment="Center" VerticalAlignment="Top" Height="121" Width="225">
                 <Label x:Name="lblWysokosc" Content="Wysokość" HorizontalAlignment="Left" Margin="15,7,0,0" VerticalAlignment="Top" Width="67" Height="26" Foreground="White"/>
                 <Label x:Name="label" Content="Szerokość" HorizontalAlignment="Left" Margin="15,35,0,0" VerticalAlignment="Top" Width="67" Foreground="White"/>
                 <Label x:Name="label1" Content="Głębokość" HorizontalAlignment="Left" Margin="15,63,0,0" VerticalAlignment="Top" Width="67" Foreground="White"/>
                 <Label x:Name="label2" Content="Waga" HorizontalAlignment="Left" Margin="15,91,0,0" VerticalAlignment="Top" Width="67" Foreground="White"/>
-                <TextBox x:Name="txbWysokosc" HorizontalAlignment="Left" Height="23" Margin="95,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <TextBox x:Name="txbSzerokosc" HorizontalAlignment="Left" Height="23" Margin="95,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <TextBox x:Name="txbGlebokosc" HorizontalAlignment="Left" Height="23" Margin="95,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <TextBox x:Name="txbWaga" HorizontalAlignment="Left" Height="23" Margin="95,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="txbWysokosc" HorizontalAlignment="Left" Height="23" Margin="95,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="White" Background="Transparent" BorderBrush="#FFABADB3"/>
+                <TextBox x:Name="txbSzerokosc" HorizontalAlignment="Left" Height="23" Margin="95,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="White" Background="Transparent" BorderBrush="#FFABADB3"/>
+                <TextBox x:Name="txbGlebokosc" HorizontalAlignment="Left" Height="23" Margin="95,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="White" Background="Transparent" BorderBrush="#FFABADB3"/>
+                <TextBox x:Name="txbWaga" HorizontalAlignment="Left" Height="23" Margin="95,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="White" Background="Transparent" BorderBrush="#FFABADB3"/>
             </Grid>
             <Label x:Name="lblNadaj" Content="Nadaj paczkę" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="93,10,109,0" Foreground="White" FontWeight="Bold"/>
-            <Grid x:Name="grdAdres" Margin="24,169,24,0" HorizontalAlignment="Center" VerticalAlignment="Top" Height="143">
-                <TextBox x:Name="txbMiejscowosc" HorizontalAlignment="Left" Height="23" Margin="100,5,5,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <TextBox x:Name="txbKodP" HorizontalAlignment="Left" Height="23" Margin="100,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <TextBox x:Name="txbUlica" HorizontalAlignment="Left" Height="23" Margin="100,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <TextBox x:Name="txbNrM" HorizontalAlignment="Left" Height="23" Margin="100,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <Grid x:Name="grdAdres" Margin="24,225,24,0" HorizontalAlignment="Center" VerticalAlignment="Top" Height="143">
+                <TextBox x:Name="txbMiejscowosc" HorizontalAlignment="Left" Height="23" Margin="100,5,5,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="White" Background="Transparent" BorderBrush="#FFABADB3"/>
+                <TextBox x:Name="txbKodP" HorizontalAlignment="Left" Height="23" Margin="100,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="White" Background="Transparent" BorderBrush="#FFABADB3"/>
+                <TextBox x:Name="txbUlica" HorizontalAlignment="Left" Height="23" Margin="100,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="White" Background="Transparent" BorderBrush="#FFABADB3"/>
+                <TextBox x:Name="txbNrM" HorizontalAlignment="Left" Height="23" Margin="100,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="White" Background="Transparent" BorderBrush="#FFABADB3"/>
                 <Label x:Name="lblMiejscowosc" Content="Miejscowosc" HorizontalAlignment="Left" Margin="16,2,0,0" VerticalAlignment="Top" Foreground="White"/>
                 <Label x:Name="lblKodP" Content="Kod Pocztowy" HorizontalAlignment="Left" Margin="16,30,0,0" VerticalAlignment="Top" Foreground="White"/>
                 <Label x:Name="lblUlica" Content="Ulica" HorizontalAlignment="Left" Margin="16,59,0,0" VerticalAlignment="Top" Foreground="White"/>
                 <Label x:Name="lblNrM" Content="Nr. Mieszkania" HorizontalAlignment="Left" Margin="16,86,0,0" VerticalAlignment="Top" Foreground="White"/>
                 <Label x:Name="lblNrB" Content="Nr. Budynku" HorizontalAlignment="Left" Margin="16,114,0,0" VerticalAlignment="Top" Foreground="White"/>
-                <TextBox x:Name="txbNrB" HorizontalAlignment="Left" Height="23" Margin="100,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="txbNrB" HorizontalAlignment="Left" Height="23" Margin="100,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="White" Background="Transparent" BorderBrush="#FFABADB3"/>
             </Grid>
-            <Button x:Name="btnWyslij" Content="Wyślij" HorizontalAlignment="Center" Margin="103,319,109,0" VerticalAlignment="Top" Width="75" Click="btnWyslij_Click" Foreground="White" BorderBrush="Black" Background="#FF7D7D7D"/>
+            <Button x:Name="btnWyslij" Content="Wyślij" HorizontalAlignment="Center" Margin="0,0,0,10" VerticalAlignment="Bottom" Width="75" Click="btnWyslij_Click" Background="#FF535353" Foreground="White"/>
+            <Label x:Name="lblDaneZamieszkania" Content="Dane Zamieszkania Odbiorcy" HorizontalAlignment="Center" Margin="31,195,31,0" VerticalAlignment="Top" Width="225" Foreground="White" FontWeight="Bold"/>
+            <Label x:Name="lblDanePaczki" Content="Wymiary Paczki" HorizontalAlignment="Center" Margin="0,41,0,0" VerticalAlignment="Top" Width="225" Foreground="White" FontWeight="Bold"/>
         </Grid>
-        <Grid x:Name="grdKlient" HorizontalAlignment="Left" Height="306" Margin="665,10,0,0" VerticalAlignment="Top" Width="118">
-            <Label x:Name="lblImie" Content="Imie" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Foreground="White"/>
-            <Label x:Name="lblNazwisko" Content="Nazwisko" HorizontalAlignment="Center" Margin="0,59,0,0" VerticalAlignment="Top" Foreground="White"/>
-            <Label x:Name="lblNumer" Content="Numer telefonu" HorizontalAlignment="Center" Margin="0,108,0,0" VerticalAlignment="Top" Foreground="White"/>
-            <TextBox x:Name="txbImie" HorizontalAlignment="Left" Height="23" Margin="0,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118"/>
-            <TextBox x:Name="txbNazwisko" HorizontalAlignment="Left" Height="23" Margin="0,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118"/>
-            <TextBox x:Name="txbNumerKontaktowy" HorizontalAlignment="Left" Height="23" Margin="0,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118"/>
+        <Grid x:Name="grdKlient" HorizontalAlignment="Left" Height="260" Margin="665,10,0,0" VerticalAlignment="Top" Width="118">
+            <Label x:Name="lblImie" Content="Imie" HorizontalAlignment="Center" Margin="0,26,0,0" VerticalAlignment="Top" Foreground="White"/>
+            <Label x:Name="lblNazwisko" Content="Nazwisko" HorizontalAlignment="Center" Margin="0,80,0,0" VerticalAlignment="Top" Foreground="White"/>
+            <Label x:Name="lblNumer" Content="Numer telefonu" HorizontalAlignment="Center" Margin="0,134,0,0" VerticalAlignment="Top" Foreground="White"/>
+            <TextBox x:Name="txbImie" HorizontalAlignment="Left" Height="23" Margin="0,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" Foreground="White" Background="Transparent" BorderBrush="#FFABADB3"/>
+            <TextBox x:Name="txbNazwisko" HorizontalAlignment="Left" Height="23" Margin="0,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" Foreground="White" Background="Transparent" BorderBrush="#FFABADB3"/>
+            <TextBox x:Name="txbNumerKontaktowy" HorizontalAlignment="Left" Height="23" Margin="0,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" Foreground="White" Background="Transparent" BorderBrush="#FFABADB3"/>
+            <Label x:Name="lblDaneOdbiorcy" Content="Dane Odbiorcy" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Top" Width="100" Foreground="White" FontWeight="Bold"/>
         </Grid>
-        <Button x:Name="btnWyloguj" Content="Wyloguj" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Click="btnWyloguj_Click" Background="#FF858585" BorderBrush="Black" Foreground="White" FontSize="18" Width="100"/>
+        <Button x:Name="btnWyloguj" Content="Wyloguj" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Click="btnWyloguj_Click" Background="#FF535353" Foreground="White" FontSize="18" Width="100"/>
 
     </Grid>
 </Window>
