@@ -300,6 +300,7 @@ namespace Nozama
 
         private void btnWyloguj_Click(object sender, RoutedEventArgs e)
         {
+            MainWindow.contact.connection.Close();
             this.Close();
         }
     }
