@@ -236,7 +236,7 @@ namespace Nozama
         {
             /* Jeżeli zamówienia już są wyświetlane to wyczyśc listę */
             Zamowienia.Clear();
-
+            //UstawTytułyKolumnMoimZleceniom();
             /* Pobierz paczki które użytkownik wysłał */
             var command = new MySqlCommand($"SELECT z.ID_Zamowienia, s.Status, adr.Miejscowosc, pa.Wysokosc, pa.Szerokosc, pa.Glebokosc, pa.Waga FROM zamowienie z, status s, aktualny_status akts, adres adr, klienci kl, paczka pa WHERE z.Nadawca_ID = {idKlienta} AND akts.Zamowienia_ID = z.ID_Zamowienia AND akts.Status_ID = s.ID_Statusu AND kl.ID_Klienta = z.Odbiorca_ID AND adr.ID_Adresu = kl.Adres_ID And pa.ID_Paczki = z.Paczka_ID", MainWindow.contact.connection);
             command.ExecuteNonQuery();
@@ -310,7 +310,7 @@ namespace Nozama
         {
             PobierzZamowieniaUzytkownika();
         }
-        public void UstawTytułyKolumnDostepnymZleceniom()
+        public void UstawTytułyKolumnMoimZleceniom()
         {
             dtaZamowienia.Columns[0].Header = " ID ";
             dtaZamowienia.Columns[1].Header = " Status ";
@@ -325,6 +325,11 @@ namespace Nozama
         {
             MainWindow.contact.connection.Close();
             this.Close();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            UstawTytułyKolumnMoimZleceniom();
         }
     }
 }
