@@ -289,6 +289,19 @@ namespace Nozama
                 PobierzZamowieniaUzytkownika();
 
                 MessageBox.Show("Zamówienie zostało pomyślnie utworzone");
+                txbGlebokosc.Clear();
+                txbImie.Clear();
+                txbKodP.Clear();
+                txbMiejscowosc.Clear();
+                txbNazwisko.Clear();
+                txbNrB.Clear();
+                txbNrM.Clear();
+                txbNumerKontaktowy.Clear();
+                txbSzerokosc.Clear();
+                txbUlica.Clear();
+                txbWaga.Clear();
+                txbWysokosc.Clear();
+                
             }
 
         }
@@ -296,6 +309,16 @@ namespace Nozama
         private void btnOdswiezPaczki_Click(object sender, RoutedEventArgs e)
         {
             PobierzZamowieniaUzytkownika();
+        }
+        public void UstawTytułyKolumnDostepnymZleceniom()
+        {
+            dtaZamowienia.Columns[0].Header = " ID ";
+            dtaZamowienia.Columns[1].Header = " Status ";
+            dtaZamowienia.Columns[2].Header = " Dokąd ";
+            dtaZamowienia.Columns[3].Header = " Długość ";
+            dtaZamowienia.Columns[4].Header = " Szerokość ";
+            dtaZamowienia.Columns[5].Header = " Głębokość ";
+            dtaZamowienia.Columns[6].Header = " Waga ";
         }
 
         private void btnWyloguj_Click(object sender, RoutedEventArgs e)

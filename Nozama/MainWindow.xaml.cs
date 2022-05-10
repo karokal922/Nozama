@@ -91,6 +91,8 @@ namespace Nozama
             catch (Exception error)
             {
                 MessageBox.Show(error.Message);
+                
+                contact.connection.Close();
             }
         }
 
